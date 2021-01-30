@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="<?= base_url('dashboard') ?>"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                    <a href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets') ?>/images/logo/logo.png" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class='sidebar-hide d-xl-none d-block'><i class='bi bi-x bi-middle'></i></a>
@@ -24,11 +24,14 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
-                        <span>Components</span>
+                        <span>Data Master</span>
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a href="component-alert.html">Alert</a>
+                            <a href="<?= base_url('user/index') ?>">Data User</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('level/index') ?>">Data Level</a>
                         </li>
                     </ul>
                 </li>
@@ -46,6 +49,6 @@
     </header>
 
     <div class="page-heading">
-        <h3>Profile Statistics</h3>
+        <h3><?= $title ?></h3>
     </div>
     <div class="page-content">

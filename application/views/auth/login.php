@@ -23,16 +23,16 @@
                     </div> -->
                     <h1 class="auth-title" style="font-size: 30px;">Log in.</h1>
                     <p class="auth-subtitle mb-5" style="font-size: 20px;">Log in with your data that you entered during registration.</p>
-
-                    <form action="index.html">
+                    
+                    <form action="<?= base_url('auth/login') ?>" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" placeholder="Username" name="username">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
