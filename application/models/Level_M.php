@@ -14,7 +14,7 @@ class Level_M extends CI_Model
 
     public function first($id)
     {
-        return $this->db->get_where('levels', ['id' => $id])->row_array();
+        return $this->db->get_where('levels', ['id_level' => $id])->row_array();
     }
 
     public function update($id, $data)
@@ -25,6 +25,6 @@ class Level_M extends CI_Model
 
     public function delete($id)
     {
-        $this->db->delete('levels', ['id' => $id]);
+        $this->db->delete('levels', ['id_level' => $id]);
     }
 }

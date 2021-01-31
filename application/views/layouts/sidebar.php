@@ -28,12 +28,26 @@
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a href="<?= base_url('user/index') ?>">Data User</a>
+                            <a href="<?= base_url('user') ?>">Data User</a>
                         </li>
                         <li>
-                            <a href="<?= base_url('level/index') ?>">Data Level</a>
+                            <a href="<?= base_url('level') ?>">Data Level</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="<?= base_url('petugas') ?>" class='sidebar-link'>
+                        <i class="fas fa-user-shield"></i>
+                        <span>Data Petugas</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="<?= base_url('auth/logout') ?>" class='sidebar-link'>
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
                 </li>
 
             </ul>

@@ -22,22 +22,28 @@ class Auth extends CI_Controller
         $user = $this->db->get_where('users', ['username' => $username])->row_array();
 
         // Buat kondisi apakah data user ditemukan atau tidak
-        if($user){
+        if ($user) {
             // Buat kondisi apakah password yang dimasukan sesuai dengan password dari database
-            if(password_verify($password, $user['password'])){
+            if (password_verify($password, $user['password'])) {
                 // Buat session untuk login
                 $this->session->set_userdata([
                     'login' => true,
                     'username' => $user['username'],
                     'level_id' => $user['level_id']
                 ]);
-                
+
                 // Buat session flash data untuk kirim pesan
                 $this->session->set_flashdata('success', 'Selamat datang kembali');
                 redirect(base_url('dashboard'));
-            }else{
-                
+            } else {
             }
         }
+    }
+
+    public function logout()
+    {
+        session_unset();
+        session_destroy();
+        redirect(base_url());
     }
 }
