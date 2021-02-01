@@ -57,6 +57,21 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fab fa-uncharted"></i>
+                        <span>Data Lelang</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li>
+                            <a href="<?= base_url('lelang') ?>">Data Lelang</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('level') ?>">Laporan Lelang</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="sidebar-item">
                     <a href="<?= base_url('auth/logout') ?>" class='sidebar-link'>
                         <i class="fas fa-sign-out-alt"></i>

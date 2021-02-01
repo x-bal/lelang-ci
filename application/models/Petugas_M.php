@@ -10,7 +10,7 @@ class Petugas_M extends CI_Model
     public function update($id, $data)
     {
         $this->db->where('id_petugas', $id);
-        $this->update('petugas', $data);
+        $this->db->update('petugas', $data);
     }
 
     public function delete($id)

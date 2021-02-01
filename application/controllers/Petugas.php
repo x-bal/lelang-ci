@@ -91,17 +91,10 @@ class Petugas extends CI_Controller
     public function update($id)
     {
         // Buat validasi atau aturan mengenai inputan yang dari form
-        $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]', [
-            'required' => 'Username tidak boleh kosong',
-            'min_length' => 'Username terlalu pendek',
-        ]);
+
 
         $this->form_validation->set_rules('nama', 'Nama', 'required', [
             'required' => 'Nama tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('email', 'Email', 'required', [
-            'required' => 'Email tidak boleh kosong',
         ]);
 
         $this->form_validation->set_rules('telp', 'No Telp', 'required|numeric', [
@@ -110,14 +103,14 @@ class Petugas extends CI_Controller
         ]);
 
         // Buat kondisi jika validasi nya salah atau false maka kembalikan ke halaman edit dan jika benar maka lakukan update data
-        if($this->form_validation->run() == false){
+        if ($this->form_validation->run() == false) {
             $this->edit($id);
-        }else{
+        } else {
             $data = [
                 'nama' => $this->input->post('nama', true),
                 'telp' => $this->input->post('telp', true)
             ];
-            
+
             // Lakukan update dengan memanggil method update dari model petugas
             $this->Petugas_M->update($id, $data);
 

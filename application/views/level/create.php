@@ -4,7 +4,7 @@
             <div class="card-header"><?= $title ?></div>
 
             <div class="card">
-                <div class="body">
+                <div class="card-body">
                     <form action="<?= base_url('level/store') ?>" method="post">
                         <div class="form-group">
                             <label for="level">Level</label>

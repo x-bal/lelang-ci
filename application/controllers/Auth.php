@@ -2,6 +2,14 @@
 
 class Auth extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('User_M');
+        $this->load->model('Masyarakat_M');
+        $this->load->library('form_validation');
+    }
+
     public function index()
     {
         $this->load->view('auth/login');
@@ -38,6 +46,11 @@ class Auth extends CI_Controller
             } else {
             }
         }
+    }
+
+    public function signup()
+    {
+        # code...
     }
 
     public function logout()

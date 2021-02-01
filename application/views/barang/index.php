@@ -24,8 +24,10 @@
                             <tr>
                                 <td></td>
                                 <td><?= $no++ ?></td>
-                                <td>Image</td>
-                                <td><?= $brg['nam'] ?></td>
+                                <td><img src="<?= base_url('assets/images/barang/' . $brg['images']) ?>" alt="" width="70"></td>
+                                <td><?= $brg['nama_barang'] ?></td>
+                                <td>Rp. <?= rupiah($brg['harga_awal']) ?></td>
+                                <td><?= substr($brg['deskripsi'], 0, 30) ?>...</td>
                                 <td>
                                     <a href="<?= base_url('barang/edit/' . $brg['id_barang']) ?>" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
                                     <a href="<?= base_url('barang/destroy/' . $brg['id_barang']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus barang?')"><i class="fas fa-trash"></i></a>
