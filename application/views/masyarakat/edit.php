@@ -4,7 +4,7 @@
             <div class="card-header"><?= $title ?></div>
 
             <div class="card-body">
-                <form action="<?= base_url('petugas/update/' . $petugas['id_petugas']) ?>" method="post">
+                <form action="<?= base_url('masyarakat/update/' . $masyarakat['id_petugas']) ?>" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" class="form-control" value="<?= $petugas['username'] ?>" readonly>

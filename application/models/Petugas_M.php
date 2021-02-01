@@ -7,6 +7,17 @@ class Petugas_M extends CI_Model
         $this->db->insert('petugas', $data);
     }
 
+    public function update($id, $data)
+    {
+        $this->db->where('id_petugas', $id);
+        $this->update('petugas', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete('petugas', ['id_petugas' => $id]);
+    }
+
     public function users()
     {
         $this->db->select('petugas.*, users.*');

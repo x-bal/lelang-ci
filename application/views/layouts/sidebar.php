@@ -44,6 +44,20 @@
                 </li>
 
                 <li class="sidebar-item">
+                    <a href="<?= base_url('masyarakat') ?>" class='sidebar-link'>
+                        <i class="fas fa-user-tag"></i>
+                        <span>Data Masyarakat</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="<?= base_url('barang') ?>" class='sidebar-link'>
+                        <i class="fas fa-tags"></i>
+                        <span>Data Barang</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
                     <a href="<?= base_url('auth/logout') ?>" class='sidebar-link'>
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>

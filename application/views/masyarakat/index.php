@@ -4,7 +4,7 @@
             <div class="card-header"><?= $title ?></div>
 
             <div class="card-body">
-                <a href="<?= base_url('petugas/create') ?>" class="btn btn-sm btn-primary mb-3">Tambah Petugas</a>
+                <a href="<?= base_url('masyarakat/create') ?>" class="btn btn-sm btn-primary mb-3">Tambah Masyarakat</a>
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -20,17 +20,17 @@
 
                     <tbody>
                         <?php $i = 1;
-                        foreach ($petugas as $tgs) : ?>
+                        foreach ($masyarakat as $msy) : ?>
                             <tr>
                                 <td></td>
                                 <td><?= $i++ ?></td>
-                                <td><?= $tgs['username'] ?></td>
-                                <td><?= $tgs['nama'] ?></td>
-                                <td><?= $tgs['email'] ?></td>
-                                <td><?= $tgs['telp'] ?></td>
+                                <td><?= $msy['username'] ?></td>
+                                <td><?= $msy['nama'] ?></td>
+                                <td><?= $msy['email'] ?></td>
+                                <td><?= $msy['telp'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('petugas/edit/' . $tgs['id_petugas']) ?>" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
-                                    <a href="<?= base_url('petugas/destroy/' . $tgs['id_petugas']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Petugas?')"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('masyarakat/edit/' . $msy['id_masyarakat']) ?>" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                    <a href="<?= base_url('masyarakat/destroy/' . $msy['id_masyarakat']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus masyarakat?')"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
