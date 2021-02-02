@@ -7,7 +7,9 @@ class Lelang extends CI_Controller
         parent::__construct();
         $this->load->model('Lelang_M');
         $this->load->model('Barang_M');
+        $this->load->model('History_M');
         $this->load->helper('rupiah_helper');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -27,7 +29,8 @@ class Lelang extends CI_Controller
     {
         $data = [
             'title' => 'Tambah Lelang',
-            'barang' => $this->Barang_M->get()
+            'barang' => $this->Barang_M->get(),
+            'lelang' => $this->Lelang_M->barangs()
         ];
 
         $this->load->view('layouts/header', $data);
@@ -48,5 +51,48 @@ class Lelang extends CI_Controller
 
         $this->session->set_flashdata('success', 'Lelang berhasil ditambahkan');
         redirect(base_url('lelang'));
+    }
+
+    public function show($id)
+    {
+        $data = [
+            'title' => 'Detail Barang',
+            'lelang' => $this->Lelang_M->barang($id),
+            'historyLelang' => $this->Lelang_M->getHistory($id)
+        ];
+
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
+        $this->load->view('lelang/show');
+        $this->load->view('layouts/footer');
+    }
+
+    public function tawarkan()
+    {
+        $idBarang = $this->input->post('id_barang', true);
+        $barang = $this->Lelang_M->barang($idBarang);
+
+        $this->form_validation->set_rules('tawaran', 'Penawaran', 'required', [
+            'required' => 'Tawaran harus diisi',
+        ]);
+
+        if ($this->input->post('tawaran', true) <= $barang['harga_awal']) {
+            $this->session->set_flashdata('tawaran', 'Tawaran tidak boleh kurang dari harga awal');
+            $this->show($barang['id_lelang']);
+        }
+
+        if ($this->form_validation->run() == false) {
+        } else {
+            $data = [
+                'lelang_id' => $barang['id_lelang'],
+                'user_id' => $this->session->userdata('id_user'),
+                'penawaran_harga' => $this->input->post('tawaran', true)
+            ];
+
+            $this->History_M->insert($data);
+
+            $this->session->set_flashdata('success', 'Tawaran berhasil di tawarkan');
+            redirect(base_url('lelang/show/' . $barang['id_lelang']));
+        }
     }
 }

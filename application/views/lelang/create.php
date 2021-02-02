@@ -11,7 +11,12 @@
                             <select name="barang" id="barang" class="form-control">
                                 <option disabled selected>-- Pilih Barang --</option>
                                 <?php foreach ($barang as $brg) : ?>
-                                    <option value="<?= $brg['id_barang'] ?>"><?= $brg['nama_barang'] ?></option>
+                                    <?php foreach ($lelang as $lel) : ?>
+                                        <?php if ($brg['id_barang'] == $lel['barang_id']) : ?>
+                                        <?php else : ?>
+                                            <option value="<?= $brg['id_barang'] ?>"><?= $brg['nama_barang'] ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>

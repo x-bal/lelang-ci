@@ -37,13 +37,7 @@
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
-                        <div class="form-check form-check d-flex align-items-end">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                                Keep me logged in
-                            </label>
-                        </div>
-                        <button class="btn btn-primary btn-block btn shadow mt-5">Log in</button>
+                        <button class="btn btn-primary btn-block btn shadow mt-3">Log in</button>
                     </form>
                     <div class="text-center mt-5">
                         <p class='text-gray-600'>Don't have an account? <a href="<?= base_url('auth/register') ?>" class='font-bold'>Sign

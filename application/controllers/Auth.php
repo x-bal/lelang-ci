@@ -36,6 +36,7 @@ class Auth extends CI_Controller
                 // Buat session untuk login
                 $this->session->set_userdata([
                     'login' => true,
+                    'id_user' => $user['id_user'],
                     'username' => $user['username'],
                     'level_id' => $user['level_id']
                 ]);

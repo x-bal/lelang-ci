@@ -83,6 +83,19 @@ class Barang extends CI_Controller
         }
     }
 
+    public function show($id)
+    {
+        $data = [
+            'title' => 'Detail Barang',
+            'barang' => $this->Barang_M->first($id)
+        ];
+
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
+        $this->load->view('barang/show');
+        $this->load->view('layouts/footer');
+    }
+
     public function edit($id)
     {
         $data = [
