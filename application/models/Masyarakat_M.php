@@ -1,6 +1,6 @@
 <?php
 
-class Masyarakat_M extends CI_Model 
+class Masyarakat_M extends CI_Model
 {
 
     public function insert($data)
@@ -26,9 +26,14 @@ class Masyarakat_M extends CI_Model
         return $this->db->get()->row_array();
     }
 
+    public function update($id, $data)
+    {
+        $this->db->where('id_masyarakat', $id);
+        $this->db->update('masyarakats', $data);
+    }
+
     public function delete($id)
     {
         $this->db->delete('masyarakats', ['id_masyarakat' => $id]);
     }
-
 }

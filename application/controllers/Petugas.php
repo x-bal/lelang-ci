@@ -75,12 +75,10 @@ class Petugas extends CI_Controller
 
     public function edit($id)
     {
-        $petugas =
-
-            $data = [
-                'title' => 'Edit Petugas',
-                'petugas' => $this->Petugas_M->user($id),
-            ];
+        $data = [
+            'title' => 'Edit Petugas',
+            'petugas' => $this->Petugas_M->user($id),
+        ];
 
         $this->load->view('layouts/header', $data);
         $this->load->view('layouts/sidebar', $data);

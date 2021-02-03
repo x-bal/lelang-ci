@@ -29,7 +29,14 @@
                             <td><?= $barang['tanggal_lelang'] ?></td>
                             <td><?= $barang['nama_barang'] ?></td>
                             <td>Rp. <?= rupiah($barang['harga_awal']) ?></td>
-                            <td><?= $barang['user_id'] ?></td>
+                            <?php $pemenang = $this->User_M->masyarakat($barang['user_id']); ?>
+                            <td>
+                                <?php if ($pemenang) : ?>
+                                    <?= $pemenang['nama'] ?>
+                                <?php else : ?>
+                                    -
+                                <?php endif; ?>
+                            </td>
                             <td>Rp. <?= rupiah($barang['harga_akhir']) ?></td>
                             <td><?= $barang['status'] ?></td>
                             <td>

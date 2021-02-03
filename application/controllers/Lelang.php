@@ -8,6 +8,7 @@ class Lelang extends CI_Controller
         $this->load->model('Lelang_M');
         $this->load->model('Barang_M');
         $this->load->model('History_M');
+        $this->load->model('User_M');
         $this->load->helper('rupiah_helper');
         $this->load->library('form_validation');
     }
@@ -94,5 +95,21 @@ class Lelang extends CI_Controller
             $this->session->set_flashdata('success', 'Tawaran berhasil di tawarkan');
             redirect(base_url('lelang/show/' . $barang['id_lelang']));
         }
+    }
+
+    public function choose()
+    {
+        $id = $this->input->post('id_lelang', true);
+
+        $data = [
+            'user_id' => $this->input->post('user_id', true),
+            'harga_akhir' => $this->input->post('harga_akhir', true),
+            'status' => 'ditutup'
+        ];
+
+        $this->Lelang_M->update($id, $data);
+
+        $this->session->set_flashdata('success', 'Pemenang berhasil dipilih');
+        redirect(base_url('lelang'));
     }
 }

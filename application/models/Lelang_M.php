@@ -54,4 +54,10 @@ class Lelang_M extends CI_Model
     {
         $this->db->insert('lelangs', $data);
     }
+
+    public function update($id, $data)
+    {
+        $this->db->where('id_lelang', $id);
+        $this->db->update('lelangs', $data);
+    }
 }

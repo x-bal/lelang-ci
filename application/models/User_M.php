@@ -36,4 +36,22 @@ class User_M extends CI_Model
         $this->db->order_by('id_user', 'DESC');
         return $this->db->get()->row_array();
     }
+
+    public function masyarakat($id)
+    {
+        $this->db->select('users.*, masyarakats.nama');
+        $this->db->from('users');
+        $this->db->join('masyarakats', 'users.id_user=masyarakats.user_id');
+        $this->db->where('id_user', $id);
+        return $this->db->get()->row_array();
+    }
+
+    public function petugas($id)
+    {
+        $this->db->select('users.*, petugas.nama');
+        $this->db->from('users');
+        $this->db->join('petugas', 'users.id_user=petugas.user_id');
+        $this->db->where('id_user', $id);
+        return $this->db->get()->row_array();
+    }
 }

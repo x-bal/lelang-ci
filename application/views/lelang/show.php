@@ -62,6 +62,9 @@
                             <th>Nama Penawar</th>
                             <th>Harga Awal</th>
                             <th>Tawaran</th>
+                            <?php if ($this->session->userdata('level_id') != 3) : ?>
+                                <th>Opsi</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
 
@@ -75,6 +78,17 @@
                                 <td><?= $history['nama'] ?></td>
                                 <td>Rp. <?= rupiah($lelang['harga_awal']) ?></td>
                                 <td>Rp. <?= rupiah($history['penawaran_harga']) ?></td>
+                                <?php if ($this->session->userdata('level_id') != 3) : ?>
+                                    <td>
+                                        <form action="<?= base_url('lelang/choose') ?>" method="post" style="display: inline;">
+                                            <input type="hidden" name="id_lelang" value="<?= $history['id_lelang'] ?>">
+                                            <input type="hidden" name="user_id" value="<?= $history['id_user'] ?>">
+                                            <input type="hidden" name="harga_akhir" value="<?= $history['penawaran_harga'] ?>">
+
+                                            <button type="submit" class="btn btn-sm btn-primary" onclick="return confirm('Pilih sebagai pemenang?')"><i class="fas fa-check"></i></button>
+                                        </form>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

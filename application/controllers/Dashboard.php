@@ -12,6 +12,8 @@ class Dashboard extends CI_Controller
         }
 
         $this->load->model("Lelang_M");
+        $this->load->model("User_M");
+        $this->load->model("Dashboard_M");
         $this->load->helper('rupiah_helper');
     }
 

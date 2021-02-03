@@ -1,6 +1,6 @@
 <?php
 
-class Masyarakat extends CI_Controller 
+class Masyarakat extends CI_Controller
 {
     public function __construct()
     {
@@ -66,6 +66,51 @@ class Masyarakat extends CI_Controller
 
             // Buat pesan dan kembalikan ke halaman index petugas
             $this->session->set_flashdata('success', 'Masyarakat berhasil ditambahkan');
+            redirect(base_url('masyarakat'));
+        }
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Edit Masyarakat',
+            'masyarakat' => $this->Masyarakat_M->user($id),
+        ];
+
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
+        $this->load->view('masyarakat/edit');
+        $this->load->view('layouts/footer');
+    }
+
+    public function update($id)
+    {
+        // Buat validasi atau aturan mengenai inputan yang dari form
+
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'Nama tidak boleh kosong'
+        ]);
+
+        $this->form_validation->set_rules('telp', 'No Telp', 'required|numeric', [
+            'required' => 'No Telp harus tidak boleh kosong',
+            'numeric' => 'No Telp harus berupa angka'
+        ]);
+
+        // Buat kondisi jika validasi nya salah atau false maka kembalikan ke halaman edit dan jika benar maka lakukan update data
+        if ($this->form_validation->run() == false) {
+            $this->edit($id);
+        } else {
+            $data = [
+                'nama' => $this->input->post('nama', true),
+                'telp' => $this->input->post('telp', true)
+            ];
+
+            // Lakukan update dengan memanggil method update dari model petugas
+            $this->Masyarakat_M->update($id, $data);
+
+            // Buat pesan dan kembalikan ke halaman index petugas
+            $this->session->set_flashdata('success', 'Masyarakat berhasil diupdate');
             redirect(base_url('masyarakat'));
         }
     }
