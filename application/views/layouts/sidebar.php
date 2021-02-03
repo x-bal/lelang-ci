@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets') ?>/images/logo/logo.png" alt="Logo" srcset=""></a>
+                    <a href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets') ?>/images/logo/logo-new.png" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class='sidebar-hide d-xl-none d-block'><i class='bi bi-x bi-middle'></i></a>
@@ -28,10 +28,16 @@
                         </a>
                         <ul class="submenu <?= $this->uri->segment(1) == 'user' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'level' ? 'active' : '' ?>">
                             <li>
-                                <a href="<?= base_url('user') ?>">Data User</a>
+                                <a href="<?= base_url('user') ?>">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>Data User</span>
+                                </a>
                             </li>
                             <li>
-                                <a href="<?= base_url('level') ?>">Data Level</a>
+                                <a href="<?= base_url('level') ?>">
+                                    <i class="fas fa-eye-slash mr-2"></i>
+                                    <span>Data Level</span>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -65,10 +71,16 @@
                         </a>
                         <ul class="submenu <?= $this->uri->segment(1) == 'lelang' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'laporan' ? 'active' : '' ?>">
                             <li>
-                                <a href="<?= base_url('lelang') ?>">Data Lelang</a>
+                                <a href="<?= base_url('lelang') ?>">
+                                    <i class="fas fa-donate mr-2"></i>
+                                    <span>Data Lelang</span>
+                                </a>
                             </li>
                             <li>
-                                <a href="<?= base_url('level') ?>">Laporan Lelang</a>
+                                <a href="<?= base_url('level') ?>">
+                                    <i class="fas fa-file-alt mr-2"></i>
+                                    <span>Laporan Lelang</span>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -87,11 +99,26 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <li class="sidebar-item">
-                    <a href="<?= base_url('auth/logout') ?>" class='sidebar-link'>
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
+                <li class="sidebar-item has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-cog"></i>
+                        <span>Setting</span>
                     </a>
+                    <ul class="submenu <?= $this->uri->segment(1) == 'lelang' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'laporan' ? 'active' : '' ?>">
+                        <li>
+                            <a href="<?= base_url('auth/logout') ?>">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= base_url('auth/logout') ?>">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -107,6 +134,11 @@
     </header>
 
     <div class="page-heading">
-        <h3><?= $title ?></h3>
+        <div class="row d-flex justify-content-between">
+            <div class="col-sm-11">
+                <h3><?= $title ?></h3>
+            </div>
+        </div>
+
     </div>
     <div class="page-content">
