@@ -39,7 +39,7 @@ class User_M extends CI_Model
 
     public function masyarakat($id)
     {
-        $this->db->select('users.*, masyarakats.nama');
+        $this->db->select('users.*, masyarakats.*');
         $this->db->from('users');
         $this->db->join('masyarakats', 'users.id_user=masyarakats.user_id');
         $this->db->where('id_user', $id);
@@ -48,7 +48,7 @@ class User_M extends CI_Model
 
     public function petugas($id)
     {
-        $this->db->select('users.*, petugas.nama');
+        $this->db->select('users.*, petugas.*');
         $this->db->from('users');
         $this->db->join('petugas', 'users.id_user=petugas.user_id');
         $this->db->where('id_user', $id);

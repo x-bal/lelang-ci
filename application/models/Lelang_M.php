@@ -2,6 +2,10 @@
 
 class Lelang_M extends CI_Model
 {
+    public function get()
+    {
+        return $this->db->get('lelangs')->result_array();
+    }
     public function barangs()
     {
         $this->db->select('lelangs.*, barangs.*');
@@ -59,5 +63,12 @@ class Lelang_M extends CI_Model
     {
         $this->db->where('id_lelang', $id);
         $this->db->update('lelangs', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('lelang_id', $id);
+        $this->db->delete('history_lelang');
+        $this->db->delete('lelangs', ['id_lelang' => $id]);
     }
 }

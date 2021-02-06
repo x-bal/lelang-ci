@@ -51,7 +51,52 @@ class Auth extends CI_Controller
 
     public function signup()
     {
-        # code...
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]', [
+            'required' => 'Username tidak boleh kosong',
+            'is_unique' => 'Username tidak tersedia'
+        ]);
+
+        $this->form_validation->set_rules('email', 'email', 'valid_email|required|is_unique[users.email]', [
+            'required' => 'Email tidak boleh kosong',
+            'unique' => 'Email tidak tersedia',
+            'valid_email' => 'Gunakan email yang valid'
+        ]);
+
+        $this->form_validation->set_rules('password', 'Password', 'required', [
+            'required' => 'Password tidak boleh kosong',
+        ]);
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'nama tidak boleh kosong',
+        ]);
+
+        $this->form_validation->set_rules('telp', 'No Telp', 'required', [
+            'required' => 'No Telp tidak boleh kosong',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->register();
+        } else {
+            $dataUser = [
+                'username' => $this->input->post('username', true),
+                'email' => $this->input->post('email', true),
+                'password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
+                'level_id' => 3,
+            ];
+
+            $user = $this->User_M->insert($dataUser);
+
+            $data = [
+                'nama' => $this->input->post('nama', true),
+                'telp' => $this->input->post('telp', true),
+                'user_id' => $user
+            ];
+
+            $this->Masyarakat_M->insert($data);
+
+            $this->session->set_flashdata('success', 'Akun berhasil diregistrasi');
+            redirect(base_url());
+        }
     }
 
     public function logout()

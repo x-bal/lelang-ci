@@ -29,13 +29,11 @@
                         <ul class="submenu <?= $this->uri->segment(1) == 'user' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'level' ? 'active' : '' ?>">
                             <li>
                                 <a href="<?= base_url('user') ?>">
-                                    <i class="fas fa-users mr-2"></i>
                                     <span>Data User</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="<?= base_url('level') ?>">
-                                    <i class="fas fa-eye-slash mr-2"></i>
                                     <span>Data Level</span>
                                 </a>
                             </li>
@@ -72,13 +70,11 @@
                         <ul class="submenu <?= $this->uri->segment(1) == 'lelang' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'laporan' ? 'active' : '' ?>">
                             <li>
                                 <a href="<?= base_url('lelang') ?>">
-                                    <i class="fas fa-donate mr-2"></i>
                                     <span>Data Lelang</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="<?= base_url('level') ?>">
-                                    <i class="fas fa-file-alt mr-2"></i>
                                     <span>Laporan Lelang</span>
                                 </a>
                             </li>
@@ -99,22 +95,20 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item <?= $this->uri->segment(2) == 'profile' ? 'active' : '' ?> has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fas fa-cog"></i>
                         <span>Setting</span>
                     </a>
-                    <ul class="submenu <?= $this->uri->segment(1) == 'lelang' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'laporan' ? 'active' : '' ?>">
+                    <ul class="submenu ">
                         <li>
                             <a href="<?= base_url('dashboard/profile') ?>">
-                                <i class="fas fa-user"></i>
                                 <span>Profile</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="<?= base_url('auth/logout') ?>">
-                                <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
                         </li>

@@ -41,6 +41,7 @@
                             <td><?= $barang['status'] ?></td>
                             <td>
                                 <a href="<?= base_url('lelang/show/' . $barang['id_lelang']) ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                <a href="<?= base_url('lelang/destroy/' . $barang['id_lelang']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data?')"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -10,7 +10,7 @@
                         <p class="card-text my-3">
                             <?= substr($barang['deskripsi'], 0, 30)  ?>...
                         </p>
-                        <a href="<?= base_url('lelang/show/' . $barang['id_barang']) ?>">Selengkapnya</a>
+                        <a href="<?= base_url('lelang/show/' . $barang['id_lelang']) ?>">Selengkapnya</a>
                     </div>
                 </div>
             </div>

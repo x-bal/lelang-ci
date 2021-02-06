@@ -23,6 +23,7 @@
             <div class="card-body">
                 <form action="<?= base_url('lelang/tawarkan') ?>" method="post">
                     <input type="hidden" name="id_barang" value="<?= $lelang['id_barang'] ?>">
+                    <input type="hidden" name="id_lelang" value="<?= $lelang['id_lelang'] ?>">
                     <div class="form-group">
                         <label for="tawaran">Penawaran</label>
                         <input type="number" name="tawaran" id="tawaran" class="form-control">

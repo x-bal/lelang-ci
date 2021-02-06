@@ -50,13 +50,12 @@ class Dashboard extends CI_Controller
         $data = [
             'title' => 'Profile'
         ];
-        $id=$this->session->userdata('id_user');
+        $id = $this->session->userdata('id_user');
 
-        if($this->session->userdata('level_id')==1 || $this->session->userdata('level_id') ==2)
-        {
-            $data['profile'] = $this->Petugas_M->user($id);
-        }else {
-            $data['profile'] = $this->Masyarakat_M->user($id);
+        if ($this->session->userdata('level_id') == 1 || $this->session->userdata('level_id') == 2) {
+            $data['profile'] = $this->User_M->petugas($id);
+        } else {
+            $data['profile'] = $this->User_M->masyarakat($id);
         }
 
         $this->load->view('layouts/header', $data);
@@ -67,23 +66,49 @@ class Dashboard extends CI_Controller
 
     public function updateProfile()
     {
-        $idUser=$this->session->userdata('id_user');
+        $idUser = $this->session->userdata('id_user');
 
-        $data=[
+        $data = [
             'nama' => $this->input->post('nama', true),
-            'telp' => $this->input->post('no_tlp',true)
+            'telp' => $this->input->post('no_tlp', true)
         ];
 
-        if ($this->session->userdata('level_id')==1 || $this->session->userdata('level_id') ==2)
-        {
-            $petugas=$this->Petugas_M->user($idUser);
-            $this->Petugas_M->update($petugas['id_petugas'],$data);
-            redirect(base_url('dashboard'));
-        }else{
-            $masyarakat=$this->Masyarakat_M->user($id_user);
-            $this->Masyarakat_M->update($masyarakat['id_masyarakat'],$data);
-            redirect(base_url('dashboard'));
+        if ($this->session->userdata('level_id') == 1 || $this->session->userdata('level_id') == 2) {
+            $petugas = $this->User_M->petugas($idUser);
+            if ($this->input->post('password', true) != null) {
+                $password = [
+                    'password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT)
+                ];
+                $this->User_M->update($idUser, $password);
+                $this->Petugas_M->update($petugas['id_petugas'], $data);
+
+                $this->session->set_flashdata('success', 'Profile berhasil diupdate');
+                redirect(base_url('dashboard'));
+            } else {
+                $password = ['password' => $petugas['password']];
+                $this->Petugas_M->update($petugas['id_petugas'], $data);
+                $this->User_M->update($idUser, $password);
+
+                $this->session->set_flashdata('success', 'Profile berhasil diupdate');
+                redirect(base_url('dashboard'));
+            }
+        } else {
+            $masyarakat = $this->User_M->masyarakat($idUser);
+            if ($this->input->post('password', true) != null) {
+                $password = ['password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT)];
+
+                $this->User_M->update($idUser, $password);
+                $this->Masyarakat_M->update($masyarakat['id_masyarakat'], $data);
+                $this->session->set_flashdata('success', 'Profile berhasil diupdate');
+                redirect(base_url('dashboard'));
+            } else {
+                $password = ['password' => $masyarakat['password']];
+                $this->User_M->update($idUser, $password);
+                $this->Masyarakat_M->update($masyarakat['id_masyarakat'], $data);
+
+                $this->session->set_flashdata('success', 'Profile berhasil diupdate');
+                redirect(base_url('dashboard'));
+            }
         }
     }
-
 }
