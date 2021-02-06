@@ -106,7 +106,7 @@
                     </a>
                     <ul class="submenu <?= $this->uri->segment(1) == 'lelang' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'laporan' ? 'active' : '' ?>">
                         <li>
-                            <a href="<?= base_url('auth/logout') ?>">
+                            <a href="<?= base_url('dashboard/profile') ?>">
                                 <i class="fas fa-user"></i>
                                 <span>Profile</span>
                             </a>
