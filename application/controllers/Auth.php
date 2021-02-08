@@ -45,7 +45,12 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata('success', 'Selamat datang kembali');
                 redirect(base_url('dashboard'));
             } else {
+                $this->session->set_flashdata('failed', 'Password salah');
+                redirect(base_url());
             }
+        }else{
+            $this->session->set_flashdata('failed', 'Username tidak ditemukan');
+            redirect(base_url());
         }
     }
 

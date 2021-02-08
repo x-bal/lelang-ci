@@ -115,9 +115,32 @@ class Lelang extends CI_Controller
             'status' => 'ditutup'
         ];
 
-        $this->Lelang_M->update($id, $data);
+        $user = $this->User_M->first($this->input->post('user_id', true));
 
-        $this->session->set_flashdata('success', 'Pemenang berhasil dipilih');
-        redirect(base_url('lelang'));
+        
+
+        $lelang = $this->Lelang_M->barang($id);
+
+        // $random_id = random_string('alnum', 16);
+		// $email = $this->input->post('email');
+		// $password = $this->input->post('password');
+ 
+		$this->email->from('noreply@gmail.com', 'E-Lelang');
+		$this->email->to($user['email']);
+ 
+		$this->email->subject('Pemberitahuan Pemenang');
+		$this->email->message('Selamat, anda telah terpilih sebagai pemenang dari lelang barang : ' . $lelang['nama_barang']);
+ 
+		$this->email->set_mailtype('html');
+		// $this->email->send();
+        
+        if($this->email->send() > 0){
+            $this->Lelang_M->update($id, $data);
+            $this->session->set_flashdata('success', 'Pemenang berhasil dipilih');
+            redirect(base_url('lelang'));
+        }else{
+            $this->session->set_flashdata('failed', 'Pemenang gagal dipilih');
+            redirect(base_url('lelang'));
+        }
     }
 }
