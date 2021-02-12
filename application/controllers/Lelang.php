@@ -11,10 +11,14 @@ class Lelang extends CI_Controller
         $this->load->model('User_M');
         $this->load->helper('rupiah_helper');
         $this->load->library('form_validation');
+
+        auth();
     }
 
     public function index()
     {
+        guard([1,2]);
+
         $data = [
             'title' => 'Data Lelang',
             'lelang' => $this->Lelang_M->barangs()
@@ -28,6 +32,8 @@ class Lelang extends CI_Controller
 
     public function create()
     {
+        guard([1,2]);
+
         $data = [
             'title' => 'Tambah Lelang',
             'barang' => $this->Barang_M->get(),
@@ -42,6 +48,8 @@ class Lelang extends CI_Controller
 
     public function store()
     {
+        guard([1,2]);
+
         $data = [
             'barang_id' => $this->input->post('barang', true),
             'tanggal_lelang' => $this->input->post('tanggal', true),
@@ -70,6 +78,8 @@ class Lelang extends CI_Controller
 
     public function destroy($id)
     {
+        guard([1,2]);
+
         $this->Lelang_M->delete($id);
 
         $this->session->set_flashdata('success', 'Lelang berhasil dihapus');
@@ -107,6 +117,8 @@ class Lelang extends CI_Controller
 
     public function choose()
     {
+        guard([1,2]);
+
         $id = $this->input->post('id_lelang', true);
 
         $data = [
@@ -178,6 +190,8 @@ class Lelang extends CI_Controller
 
     public function status()
     {
+        guard([1,2]);
+        
         $id = $this->input->post('id', true);
 
         if ($this->input->post('status', true) == 'dibuka') {

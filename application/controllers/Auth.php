@@ -8,20 +8,24 @@ class Auth extends CI_Controller
         $this->load->model('User_M');
         $this->load->model('Masyarakat_M');
         $this->load->library('form_validation');
+        
     }
 
     public function index()
     {
+        guest();
         $this->load->view('auth/login');
     }
 
     public function register()
     {
+        guest();
         $this->load->view('auth/register');
     }
 
     public function login()
     {
+        guest();
         // Tampung inputan username & password ke dalam variable
         $username = $this->input->post('username', true);
         $password = $this->input->post('password', true);
@@ -56,6 +60,7 @@ class Auth extends CI_Controller
 
     public function signup()
     {
+        guest();
         $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]', [
             'required' => 'Username tidak boleh kosong',
             'is_unique' => 'Username tidak tersedia'

@@ -5,11 +5,7 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
-        // Buat kondisi jika user tidak melakukan login, maka akan di kembalikan ke halaman login
-        if (!$this->session->userdata('login')) {
-            redirect(base_url());
-        }
+        auth();
 
         $this->load->model("Lelang_M");
         $this->load->model("User_M");
@@ -34,6 +30,7 @@ class Dashboard extends CI_Controller
 
     public function lelang()
     {
+        guard([3]);
         $data = [
             'title' => 'Lelang Barang',
             'lelang' => $this->Lelang_M->barangLelang()

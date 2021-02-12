@@ -10,6 +10,8 @@ class History extends CI_Controller
         $this->load->model('History_M');
         $this->load->library('form_validation');
         $this->load->helper('rupiah_helper');
+
+        auth();
     }
 
     public function index()

@@ -8,10 +8,13 @@ class Barang extends CI_Controller
         $this->load->model('Barang_M');
         $this->load->library('form_validation');
         $this->load->helper('rupiah_helper');
+
+        auth();
     }
 
     public function index()
     {
+        guard([1,2]);
         $data = [
             'title' => 'Data Barang',
             'barang' =>  $this->Barang_M->get()
@@ -25,6 +28,7 @@ class Barang extends CI_Controller
 
     public function create()
     {
+        guard([1,2]);
         $data = [
             'title' => 'Tambah Barang',
         ];
@@ -37,6 +41,8 @@ class Barang extends CI_Controller
 
     public function store()
     {
+        guard([1,2]);
+
         $this->form_validation->set_rules('nama_barang', 'Nama barang', 'required', [
             'required' => 'Nama barang tidak boleh kosong'
         ]);
@@ -98,6 +104,8 @@ class Barang extends CI_Controller
 
     public function edit($id)
     {
+        guard([1,2]);
+
         $data = [
             'title' => 'Edit Barang',
             'barang' => $this->Barang_M->first($id)
@@ -111,6 +119,8 @@ class Barang extends CI_Controller
 
     public function update($id)
     {
+        guard([1,2]);
+
         $this->form_validation->set_rules('nama_barang', 'Nama barang', 'required', [
             'required' => 'Nama barang tidak boleh kosong'
         ]);
@@ -164,6 +174,8 @@ class Barang extends CI_Controller
 
     public function destroy($id)
     {
+        guard([1,2]);
+        
         $barang = $this->Barang_M->first($id);
         unlink(FCPATH . 'assets/images/barang/' . $barang['images']);
         $this->Barang_M->delete($id);

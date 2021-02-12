@@ -5,9 +5,7 @@ class Petugas extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->userdata('login') && $this->session->userdata('level_id') != 1) {
-            redirect(base_url());
-        }
+        auth();
         $this->load->library('form_validation');
         $this->load->model('User_M');
         $this->load->model('Petugas_M');
@@ -15,6 +13,8 @@ class Petugas extends CI_Controller
 
     public function index()
     {
+        guard([1]);
+
         $data = [
             'title' => 'Data Petugas',
             'petugas' => $this->Petugas_M->users()
@@ -28,6 +28,8 @@ class Petugas extends CI_Controller
 
     public function create()
     {
+        guard([1]);
+
         $data = [
             'title' => 'Tambah Petugas'
         ];
@@ -40,6 +42,8 @@ class Petugas extends CI_Controller
 
     public function store()
     {
+        guard([1]);
+
         // Buat kondisi, jika validasinya gagal atau false maka kembalikan ke method create dan jika benar atau true maka ->
         if ($this->form_validation->run($this->validate()) == false) {
             $this->create();
@@ -75,6 +79,8 @@ class Petugas extends CI_Controller
 
     public function edit($id)
     {
+        guard([1]);
+
         $data = [
             'title' => 'Edit Petugas',
             'petugas' => $this->Petugas_M->user($id),
@@ -88,6 +94,8 @@ class Petugas extends CI_Controller
 
     public function update($id)
     {
+        guard([1]);
+
         // Buat validasi atau aturan mengenai inputan yang dari form
 
 
@@ -120,6 +128,8 @@ class Petugas extends CI_Controller
 
     public function destroy($id)
     {
+        guard([1]);
+        
         // Ambil data petugas dan user dengan join di model
         $petugas = $this->Petugas_M->user($id);
 
@@ -134,6 +144,8 @@ class Petugas extends CI_Controller
 
     public function validate()
     {
+        guard([1]);
+        
         // Buat validasi atau aturan mengenai inputan yang dari form
         $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|is_unique[users.username]', [
             'required' => 'Username tidak boleh kosong',

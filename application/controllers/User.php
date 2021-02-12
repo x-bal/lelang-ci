@@ -10,9 +10,13 @@ class User extends CI_Controller
         $this->load->model('Petugas_M');
         $this->load->model('Masyarakat_M');
         $this->load->library('form_validation');
+
+        auth();
     }
     public function index()
     {
+        guard([1]);
+
         $data = [
             'title' => 'Data User',
             'users' => $this->User_M->get()
@@ -26,6 +30,8 @@ class User extends CI_Controller
 
     public function create()
     {
+        guard([1]);
+
         $data = [
             'title' => 'Tambah User',
             'levels' => $this->Level_M->get()
@@ -39,6 +45,8 @@ class User extends CI_Controller
 
     public function store()
     {
+        guard([1]);
+
         // Buat variable untuk menampung inputan
         $data = [
             'username' => $this->input->post('username', true),
@@ -106,6 +114,8 @@ class User extends CI_Controller
 
     public function edit($id)
     {
+        guard([1]);
+
         $data = [
             'title' => 'Edit User',
             'levels' => $this->Level_M->get(),
@@ -120,6 +130,8 @@ class User extends CI_Controller
 
     public function update($id)
     {
+        guard([1]);
+
         // Buat kondisi apakah password diganti atau tidak
         if ($this->input->post('password', true) != null) {
             // Buat variable untuk menampung inputan
@@ -148,6 +160,8 @@ class User extends CI_Controller
 
     public function destroy($id)
     {
+        guard([1]);
+        
         $this->User_M->delete($id);
 
         // Buat pesan 

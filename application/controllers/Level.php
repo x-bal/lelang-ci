@@ -6,9 +6,12 @@ class Level extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Level_M');
+
+        auth();
     }
     public function index()
     {
+        guard([1]);
         $data = [
             'title' => 'Data Level',
             'levels' => $this->Level_M->get()
@@ -22,6 +25,7 @@ class Level extends CI_Controller
 
     public function create()
     {
+        guard([1]);
         $data = [
             'title' => 'Tambah Level',
         ];
@@ -34,6 +38,8 @@ class Level extends CI_Controller
 
     public function store()
     {
+        guard([1]);
+
         // Buat variable untuk menampung inputan
         $data = [
             'level' => $this->input->post('level', true),
@@ -51,6 +57,8 @@ class Level extends CI_Controller
 
     public function edit($id)
     {
+        guard([1]);
+
         $data = [
             'title' => 'Edit Level',
             'levels' => $this->Level_M->get(),
@@ -65,6 +73,8 @@ class Level extends CI_Controller
 
     public function update($id)
     {
+        guard([1]);
+
         // Buat kondisi apakah password diganti atau tidak
        
             $data = [
@@ -84,6 +94,7 @@ class Level extends CI_Controller
 
     public function destroy($id)
     {
+        guard([1]);
         $this->Level_M->delete($id);
 
         // Buat pesan 
