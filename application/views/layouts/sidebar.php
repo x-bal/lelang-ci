@@ -88,8 +88,8 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="<?= base_url('dashboard/lelang') ?>" class='sidebar-link'>
+                    <li class="sidebar-item <?= $this->uri->segment(1) == 'history' ? 'active' : '' ?>">
+                        <a href="<?= base_url('history') ?>" class='sidebar-link'>
                             <i class="fas fa-history"></i>
                             <span>History</span>
                         </a>

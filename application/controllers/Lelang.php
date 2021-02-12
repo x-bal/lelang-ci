@@ -115,32 +115,86 @@ class Lelang extends CI_Controller
             'status' => 'ditutup'
         ];
 
-        $user = $this->User_M->first($this->input->post('user_id', true));
+        $user = $this->User_M->masyarakat($this->input->post('user_id', true));
 
-        
+
 
         $lelang = $this->Lelang_M->barang($id);
 
+        $config = [
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'protocol'  => 'smtp',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'mxbal026@gmail.com',  // Email gmail
+            'smtp_pass'   => 'M-xbal.026.',  // Password gmail
+            'smtp_crypto' => 'ssl',
+            'smtp_port'   => 465,
+            'crlf'    => "\r\n",
+            'newline' => "\r\n"
+        ];
+
+        $this->load->library('email', $config);
         // $random_id = random_string('alnum', 16);
-		// $email = $this->input->post('email');
-		// $password = $this->input->post('password');
- 
-		$this->email->from('noreply@gmail.com', 'E-Lelang');
-		$this->email->to($user['email']);
- 
-		$this->email->subject('Pemberitahuan Pemenang');
-		$this->email->message('Selamat, anda telah terpilih sebagai pemenang dari lelang barang : ' . $lelang['nama_barang']);
- 
-		$this->email->set_mailtype('html');
-		// $this->email->send();
-        
-        if($this->email->send() > 0){
+        // $email = $this->input->post('email');
+        // $password = $this->input->post('password');
+
+        $this->email->from('noreply@e-lelang.com', 'E-Lelang');
+        $this->email->to($user['email']);
+
+        $this->email->subject('Pemberitahuan Pemenang');
+
+        // $dataMessage = [
+        //     'lelang' => $lelang,
+        //     'user' => $user
+        // ];
+        // $message = $this->load->view('lelang/email', $dataMessage);
+
+        $this->email->message('<div class="card-body">
+        <p>
+            Selamat kepada ' . $user['nama'] . ', anda telah menjadi pemenang lelang barang :
+        <p>
+            <b>Nama Barang : </b>' . $lelang['nama_barang'] . '<br>
+            <b>Harga Awal : </b>Rp. ' . rupiah($lelang['harga_awal']) . '<br>
+            <b>Harga Akhir : </b>Rp. ' . rupiah($lelang['harga_akhir']) . '<br>
+        </p>
+        <p>
+            Silahkan <a href="' . base_url() . '">Klik disini</a>
+        </p>
+        </p>
+    </div>');
+
+        // $this->email->send();
+
+        if ($this->email->send() > 0) {
             $this->Lelang_M->update($id, $data);
             $this->session->set_flashdata('success', 'Pemenang berhasil dipilih');
             redirect(base_url('lelang'));
-        }else{
+        } else {
             $this->session->set_flashdata('failed', 'Pemenang gagal dipilih');
             redirect(base_url('lelang'));
         }
+    }
+
+    public function status()
+    {
+        $id = $this->input->post('id', true);
+
+        if ($this->input->post('status', true) == 'dibuka') {
+            $data = [
+                'status' => $this->input->post('status', true),
+                'user_id' => 0
+            ];
+        } else {
+            $data = [
+                'status' => $this->input->post('status', true),
+            ];
+        }
+
+        $this->Lelang_M->update($id, $data);
+
+        $message = 'Ok';
+
+        echo json_encode($message);
     }
 }

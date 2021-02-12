@@ -38,7 +38,11 @@
                                 <?php endif; ?>
                             </td>
                             <td>Rp. <?= rupiah($barang['harga_akhir']) ?></td>
-                            <td><?= $barang['status'] ?></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input status" type="checkbox" id="<?= $barang['id_lelang'] ?>" <?= $barang['status'] == 'dibuka' ? 'checked' : '' ?>>
+                                </div>
+                            </td>
                             <td>
                                 <a href="<?= base_url('lelang/show/' . $barang['id_lelang']) ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                 <a href="<?= base_url('lelang/destroy/' . $barang['id_lelang']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data?')"><i class="fas fa-trash"></i></a>

@@ -1,4 +1,5 @@
 </div>
+</div>
 
 </div>
 </div>
@@ -43,6 +44,45 @@
 
         new $.fn.dataTable.FixedHeader(table);
     });
+</script>
+
+<script>
+    $(".status").click(function() {
+        if ($(this).is(':checked')) {
+            if (confirm('Buka Lelang?') == true) {
+                var id = $(this).attr('id');
+                var status = 'dibuka';
+
+                $.ajax({
+                    method: 'post',
+                    url: '<?= base_url('lelang/status') ?>',
+                    data: 'id=' + id + '&status=' + status,
+                    success: function(result) {
+                        location.reload()
+                    }
+                })
+            } else {
+                return false
+            }
+        } else {
+            if (confirm('Tutup Lelang?') == true) {
+                var id = $(this).attr('id');
+                var status = 'ditutup';
+
+                $.ajax({
+                    method: 'post',
+                    url: '<?= base_url('lelang/status') ?>',
+                    data: 'id=' + id + '&status=' + status,
+                    success: function(result) {
+                        location.reload()
+                    }
+                })
+
+            } else {
+                return false
+            }
+        }
+    })
 </script>
 <?php if ($this->session->flashdata('success')) : ?>
     <script>
