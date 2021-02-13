@@ -17,7 +17,7 @@ class Lelang extends CI_Controller
 
     public function index()
     {
-        guard([1,2]);
+        guard([1, 2]);
 
         $data = [
             'title' => 'Data Lelang',
@@ -32,7 +32,7 @@ class Lelang extends CI_Controller
 
     public function create()
     {
-        guard([1,2]);
+        guard([1, 2]);
 
         $data = [
             'title' => 'Tambah Lelang',
@@ -48,7 +48,7 @@ class Lelang extends CI_Controller
 
     public function store()
     {
-        guard([1,2]);
+        guard([1, 2]);
 
         $data = [
             'barang_id' => $this->input->post('barang', true),
@@ -78,7 +78,7 @@ class Lelang extends CI_Controller
 
     public function destroy($id)
     {
-        guard([1,2]);
+        guard([1, 2]);
 
         $this->Lelang_M->delete($id);
 
@@ -117,7 +117,7 @@ class Lelang extends CI_Controller
 
     public function choose()
     {
-        guard([1,2]);
+        guard([1, 2]);
 
         $id = $this->input->post('id_lelang', true);
 
@@ -171,7 +171,7 @@ class Lelang extends CI_Controller
             <b>Harga Akhir : </b>Rp. ' . rupiah($lelang['harga_akhir']) . '<br>
         </p>
         <p>
-            Silahkan <a href="' . base_url() . '">Klik disini</a>
+            Silahkan Hubungi Admin <a href="wa.me/6282114823280">klik disini.</a>
         </p>
         </p>
     </div>');
@@ -190,8 +190,8 @@ class Lelang extends CI_Controller
 
     public function status()
     {
-        guard([1,2]);
-        
+        guard([1, 2]);
+
         $id = $this->input->post('id', true);
 
         if ($this->input->post('status', true) == 'dibuka') {
