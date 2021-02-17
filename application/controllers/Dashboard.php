@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
         auth();
 
         $this->load->model("Lelang_M");
+        $this->load->model("History_M");
         $this->load->model("User_M");
         $this->load->model("Dashboard_M");
         $this->load->model("Masyarakat_M");
@@ -19,7 +20,9 @@ class Dashboard extends CI_Controller
     public function index()
     {
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'lelang' => $this->Lelang_M->getMasyarakat($this->session->userdata('id_user')),
+            'penawaran' => $this->History_M->getMasyarakat($this->session->userdata('id_user'))
         ];
 
         $this->load->view('layouts/header', $data);

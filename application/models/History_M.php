@@ -26,4 +26,9 @@ class History_M extends CI_Model
     {
         $this->db->delete('history_lelang', ['user_id' => $idUser]);
     }
+
+    public function getMasyarakat($id)
+    {
+        return $this->db->get_where('history_lelang', ['user_id' => $id])->num_rows();
+    }
 }

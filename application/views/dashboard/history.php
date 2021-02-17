@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header"><?= $title ?></div>
+            <div class="card-header">History Penawaran</div>
 
             <div class="card-body">
                 <a href="<?= base_url('history/destroyAll/' . $this->session->userdata('id_user')) ?>" class="btn btn-sm btn-info mb-3" onclick="return confirm('Hapus semua history?')">Hapus Semua</a>

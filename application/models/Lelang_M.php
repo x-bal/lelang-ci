@@ -71,4 +71,9 @@ class Lelang_M extends CI_Model
         $this->db->delete('history_lelang');
         $this->db->delete('lelangs', ['id_lelang' => $id]);
     }
+
+    public function getMasyarakat($id)
+    {
+        return $this->db->get_where('lelangs', ['user_id' => $id])->num_rows();
+    }
 }

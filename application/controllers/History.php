@@ -17,7 +17,7 @@ class History extends CI_Controller
     public function index()
     {
         $data = [
-            'title' => 'History Penawaran',
+            'title' => 'History',
             'history' => $this->History_M->masyarakat($this->session->userdata('id_user'))
         ];
 

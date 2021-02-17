@@ -124,4 +124,42 @@
             </div>
         </div>
     <?php endif; ?>
+    <?php if ($this->session->userdata('level_id') == 3) : ?>
+        <div class="col-6 col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                        <div class="col-md-3 text-white">
+                            <div class="stats-icon purple">
+                                <i class='fas fa-tags'></i>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h6 class="text-muted font-semibold">Jumlah Barang di Dapat</h6>
+                            <h6 class='font-extrabold mb-0'><?= $lelang ?></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-6 col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body px-3 py-4-5">
+                    <div class="row">
+                        <div class="col-md-3 text-white">
+                            <div class="stats-icon blue">
+                                <i class='fab fa-uncharted'></i>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h6 class="text-muted font-semibold">Jumlah Penawaran</h6>
+                            <h6 class='font-extrabold mb-0'><?= $penawaran ?></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>

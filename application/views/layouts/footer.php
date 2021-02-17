@@ -9,6 +9,9 @@
 
 <!-- Toastify -->
 <script src="<?= base_url('assets') ?>/vendors/toastify/toastify.js"></script>
+<!-- Sweetalert -->
+<script src="<?= base_url('assets') ?>/js/extensions/sweetalert2.js"></script>
+<script src="<?= base_url('assets') ?>/vendors/sweetalert2/sweetalert2.all.min.js"></script>
 <!-- Fontawesome -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js" integrity="sha512-UwcC/iaz5ziHX7V6LjSKaXgCuRRqbTp1QHpbOJ4l1nw2/boCfZ2KlFIqBUA/uRVF0onbREnY9do8rM/uT/ilqw==" crossorigin="anonymous"></script>
 
@@ -83,6 +86,27 @@
             }
         }
     })
+
+
+    function askConfirm() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
 </script>
 <?php if ($this->session->flashdata('success')) : ?>
     <script>
