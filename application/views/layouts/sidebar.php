@@ -26,21 +26,26 @@
                             <i class="bi bi-stack"></i>
                             <span>Data Master</span>
                         </a>
-                        <ul class="submenu <?= $this->uri->segment(1) == 'user' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'level' ? 'active' : '' ?>">
-                            <li>
-                                <a href="<?= base_url('user') ?>">
-                                    <span>Data User</span>
-                                </a>
-                            </li>
+                        <ul class="submenu <?= $this->uri->segment(1) == 'petugas' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'level' ? 'active' : '' ?> <?= $this->uri->segment(1) == 'masyarakat' ? 'active' : '' ?>">
                             <li>
                                 <a href="<?= base_url('level') ?>">
                                     <span>Data Level</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?= base_url('petugas') ?>">
+                                    <span>Data Petugas</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('masyarakat') ?>">
+                                    <span>Data Masyarakat</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
-                    <li class="sidebar-item <?= $this->uri->segment(1) == 'petugas' ? 'active' : '' ?>">
+                    <!-- <li class="sidebar-item <?= $this->uri->segment(1) == 'petugas' ? 'active' : '' ?>">
                         <a href="<?= base_url('petugas') ?>" class='sidebar-link'>
                             <i class="fas fa-user-shield"></i>
                             <span>Data Petugas</span>
@@ -52,7 +57,7 @@
                             <i class="fas fa-user-tag"></i>
                             <span>Data Masyarakat</span>
                         </a>
-                    </li>
+                    </li> -->
                 <?php endif; ?>
                 <?php if ($this->session->userdata('level_id') != 3) : ?>
                     <li class="sidebar-item <?= $this->uri->segment(1) == 'barang' ? 'active' : '' ?>">
@@ -74,7 +79,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url('level') ?>">
+                                <a href="<?= base_url('laporan') ?>">
                                     <span>Laporan Lelang</span>
                                 </a>
                             </li>
